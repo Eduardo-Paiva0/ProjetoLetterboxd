@@ -1,0 +1,15 @@
+# Ignorar arquivos de ambiente e configuração
+.env
+
+# Ignorar virtualenv
+venv/
+__pycache__/
+*.pyc
+
+# Ignorar configurações locais
+.DS_Store
+*.log
+
+# Ignorar arquivos de sistema e editor
+.vscode/
+.idea/
