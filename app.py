@@ -118,7 +118,8 @@ def get_movie_info(title):
             "title": data.get("Title"),
             "year": data.get("Year"),
             "poster": data.get("Poster") if data.get("Poster") != "N/A" else None,
-            "imdb_id": data.get("imdbID")
+            "imdb_id": data.get("imdbID"),
+            "genre": data.get("Genre")
         }
 
     except Exception as e:
