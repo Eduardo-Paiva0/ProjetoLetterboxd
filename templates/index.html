@@ -4,136 +4,187 @@
   <meta charset="UTF-8">
   <title>Descubra filmes com o Letterboxd AI</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+  * {
+    box-sizing: border-box;
+  }
 
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #0a0f1a 0%, #000814 100%);
+    color: #e6f0ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .container {
+    text-align: center;
+    background: rgba(10, 20, 40, 0.85);
+    padding: 60px 50px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0, 180, 255, 0.25);
+    backdrop-filter: blur(8px);
+    animation: fadeIn 1.2s ease;
+  }
+
+  h1 {
+    color: #00b4ff;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    font-size: 2rem;
+  }
+
+  p {
+    color: #b5c7e3;
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    background-color: #0a0e1a;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 180, 255, 0.3);
+    transition: box-shadow 0.3s ease;
+  }
+
+  input[type="text"]:focus {
+    box-shadow: 0 0 20px rgba(0, 180, 255, 0.6);
+  }
+
+  button {
+    margin-top: 25px;
+    background: linear-gradient(90deg, #00b4ff, #007bff);
+    color: #000;
+    font-weight: 600;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 12px rgba(0, 180, 255, 0.4);
+  }
+
+  button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 180, 255, 0.8);
+  }
+
+  .error {
+    color: #ff4b5c;
+    margin-top: 20px;
+    font-size: 0.9rem;
+  }
+
+  footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: #748ba8;
+    font-size: 0.8rem;
+  }
+
+  footer a {
+    color: #00b4ff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  .feedback {
+    display: inline-block;
+    margin-top: 25px;
+    font-size: 1rem;
+    color: #00b4ff;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+  }
+
+  .feedback:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 📱 RESPONSIVIDADE - TELA INICIAL */
+  @media (max-width: 768px) {
     body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, #101010 0%, #000 100%);
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
+      padding: 20px;
     }
 
     .container {
-      text-align: center;
-      background: rgba(28, 28, 28, 0.85);
-      padding: 60px 50px;
-      border-radius: 20px;
-      box-shadow: 0 0 25px rgba(0, 230, 118, 0.25);
-      backdrop-filter: blur(8px);
-      animation: fadeIn 1.2s ease;
+      padding: 40px 25px;
+      width: 95%;
     }
 
     h1 {
-      color: #00e676;
-      font-weight: 600;
-      margin-bottom: 12px;
-      letter-spacing: 1px;
-      font-size: 2rem;
+      font-size: 1.6rem;
     }
 
     p {
-      color: #bbb;
-      font-size: 0.95rem;
-      margin-bottom: 40px;
+      font-size: 0.9rem;
+      margin-bottom: 30px;
     }
 
     input[type="text"] {
-      width: 100%;
-      max-width: 300px;
-      padding: 12px 16px;
-      border: none;
-      border-radius: 10px;
-      font-size: 1rem;
-      outline: none;
-      background-color: #111;
-      color: #fff;
-      box-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
-      transition: box-shadow 0.3s ease;
-    }
-
-    input[type="text"]:focus {
-      box-shadow: 0 0 20px rgba(0, 230, 118, 0.6);
+      width: 90%;
+      font-size: 0.95rem;
     }
 
     button {
-      margin-top: 25px;
-      background: linear-gradient(90deg, #00e676, #00bfa5);
-      color: #000;
-      font-weight: 600;
-      border: none;
-      padding: 12px 28px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: all 0.3s ease-in-out;
-      box-shadow: 0 0 10px rgba(0, 230, 118, 0.4);
-    }
-
-    button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(0, 230, 118, 0.8);
-    }
-
-    .error {
-      color: #ff5252;
-      margin-top: 20px;
-      font-size: 0.9rem;
-    }
-
-    footer {
-      position: absolute;
-      bottom: 20px;
-      width: 100%;
-      text-align: center;
-      color: #666;
-      font-size: 0.8rem;
-    }
-
-    footer a {
-      color: #00e676;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
+      width: 90%;
+      padding: 12px;
+      font-size: 0.95rem;
     }
 
     .feedback {
-  display: inline-block;
-  margin-top: 25px;
-  font-size: 1rem;
-  color: #00e676;
-  text-decoration: none;
-  opacity: 0.8;
-  transition: all 0.3s ease;
-}
-
-.feedback:hover {
-  opacity: 1;
-  text-decoration: underline;
-}
-
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
+      margin-top: 20px;
+      font-size: 0.8rem;
     }
-  </style>
+
+    footer {
+      font-size: 0.7rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.4rem;
+    }
+
+    p {
+      font-size: 0.85rem;
+    }
+  }
+</style>
+
 </head>
 <body>
 
   <div class="container">
-    <h1>🎬 Letterboxd AI Recommender</h1>
-    <p>Descubra filmes incríveis baseados no seu perfil do Letterboxd</p>
+    <h1>🎬 Recomendador IA de Letterboxd </h1>
+    <p>Descubra filmes baseados no seu perfil do Letterboxd</p>
 
     <form method="POST" action="/recommend">
       <input type="text" name="username" placeholder="Digite seu nome de usuário" required>

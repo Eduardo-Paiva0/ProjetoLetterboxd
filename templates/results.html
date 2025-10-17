@@ -4,173 +4,294 @@
   <meta charset="UTF-8">
   <title>Recomendações para {{ username }}</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+  * {
+    box-sizing: border-box;
+  }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, #101010 0%, #000 100%);
-      color: #fff;
-      margin: 0;
-      padding: 40px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #0a0f1a 0%, #000814 100%);
+    color: #e6f0ff;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+  }
 
-    h1 {
-      color: #00e676;
-      font-weight: 600;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-      font-size: 2rem;
-      text-align: center;
-    }
+  h1 {
+    color: #00b4ff;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    font-size: 2rem;
+    text-align: center;
+  }
 
-    h2 {
-      color: #00bfa5;
-      margin-top: 40px;
-      margin-bottom: 15px;
-      text-align: center;
-      font-weight: 500;
-    }
+  h2 {
+    color: #0096ff;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 500;
+  }
 
+  .container {
+    background: rgba(10, 20, 40, 0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0, 180, 255, 0.25);
+    padding: 40px 50px;
+    width: 100%;
+    max-width: 1200px;
+    animation: fadeIn 1.2s ease;
+  }
+
+  .catalog {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+    justify-items: center;
+  }
+
+  .movie-card {
+    background-color: #0b1323;
+    border-radius: 14px;
+    overflow: hidden;
+    width: 160px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 180, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .movie-card:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 25px rgba(0, 180, 255, 0.8);
+  }
+
+  .movie-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .movie-card .title {
+    padding: 8px 6px 3px;
+    font-size: 0.9rem;
+    color: #e0e0e0;
+    font-weight: 500;
+  }
+
+  .genre {
+    font-size: 0.75rem;
+    color: #62d2ff;
+    padding-bottom: 10px;
+  }
+
+  .placeholder {
+    background-color: #13233a;
+    color: #99badd;
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .back {
+    display: inline-block;
+    margin-top: 40px;
+    background: linear-gradient(90deg, #00b4ff, #007bff);
+    color: #000;
+    font-weight: 600;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 180, 255, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .back:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 180, 255, 0.8);
+  }
+
+  footer {
+    text-align: center;
+    color: #8aa0c4;
+    margin-top: 60px;
+    font-size: 0.8rem;
+  }
+
+  footer a {
+    color: #00b4ff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  .feedback {
+    display: inline-block;
+    margin-top: 25px;
+    font-size: 1rem;
+    color: #00b4ff;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+  }
+
+  .feedback:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 📱 RESPONSIVIDADE - PÁGINA DE RESULTADOS */
+  @media (max-width: 1024px) {
     .container {
-      background: rgba(28, 28, 28, 0.85);
-      backdrop-filter: blur(8px);
-      border-radius: 20px;
-      box-shadow: 0 0 25px rgba(0, 230, 118, 0.25);
-      padding: 40px 50px;
-      width: 100%;
-      max-width: 1200px;
-      animation: fadeIn 1.2s ease;
+      padding: 30px 25px;
+      width: 95%;
     }
 
     .catalog {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 25px;
-      margin-top: 25px;
-      justify-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 18px;
     }
 
     .movie-card {
-      background-color: #1c1c1c;
-      border-radius: 14px;
-      overflow: hidden;
-      width: 160px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .movie-card:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 25px rgba(0, 230, 118, 0.8);
+      width: 140px;
     }
 
     .movie-card img {
+      height: 210px;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    body {
+      padding: 20px 10px;
+    }
+
+    .container {
+      padding: 25px 20px;
+    }
+
+    .catalog {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .movie-card {
       width: 100%;
-      height: 240px;
-      object-fit: cover;
-      display: block;
+      max-width: 150px;
     }
 
-    .movie-card .title {
-      padding: 8px 6px 3px;
-      font-size: 0.9rem;
-      color: #e0e0e0;
-      font-weight: 500;
-    }
-
-    .genre {
-      font-size: 0.75rem;
-      color: #8be9fd;
-      padding-bottom: 10px;
-    }
-
-    .placeholder {
-      background-color: #333;
-      color: #999;
-      height: 240px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
+    .movie-card img {
+      height: 200px;
     }
 
     .back {
-      display: inline-block;
-      margin-top: 40px;
-      background: linear-gradient(90deg, #00e676, #00bfa5);
-      color: #000;
-      font-weight: 600;
-      border: none;
-      padding: 12px 28px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-size: 1rem;
-      text-decoration: none;
-      box-shadow: 0 0 10px rgba(0, 230, 118, 0.4);
-      transition: all 0.3s ease;
-    }
-
-    .back:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(0, 230, 118, 0.8);
-    }
-
-    footer {
-      text-align: center;
-      color: #666;
-      margin-top: 60px;
-      font-size: 0.8rem;
-    }
-
-    footer a {
-      color: #00e676;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
+      width: 100%;
+      max-width: 300px;
     }
 
     .feedback {
-  display: inline-block;
-  margin-top: 25px;
-  font-size: 1rem;
-  color: #00e676;
-  text-decoration: none;
-  opacity: 0.8;
-  transition: all 0.3s ease;
-}
-
-.feedback:hover {
-  opacity: 1;
-  text-decoration: underline;
-}
-
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
+      font-size: 0.8rem;
     }
-  </style>
+
+    footer {
+      font-size: 0.7rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .catalog {
+      grid-template-columns: 1fr;
+    }
+
+    h1 {
+      font-size: 1.3rem;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+    }
+  }
+
+  /* 🎛️ Botão de filtro */
+.filter-btn {
+  margin-top: 20px;
+  background: linear-gradient(90deg, #00b4ff, #007bff);
+  color: #000;
+  font-weight: 600;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px rgba(0, 180, 255, 0.4);
+}
+
+.filter-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 180, 255, 0.8);
+}
+
+.filter-btn.active {
+  background: linear-gradient(90deg, #0094ff, #005eff);
+  color: #000;
+  border: none;
+  box-shadow: 0 0 30px rgba(0, 180, 255, 0.9);
+  cursor: default;
+  transform: scale(1.05);
+}
+
+</style>
+
 </head>
 <body>
 
   <div class="container">
     <h1>Olá, {{ username }}!</h1>
+<!-- 🔍 BOTÃO DE FILTRO DE FILMES NÃO ASSISTIDOS -->
+<form method="POST" action="/recommend" style="text-align:center; margin: 20px 0;">
+  <input type="hidden" name="username" value="{{ username }}">
+  {% if not filter_watched %}
+    <input type="hidden" name="filter_watched" value="1">
+    <button type="submit" class="filter-btn">🎞️ Mostrar apenas filmes não assistidos</button>
+  {% else %}
+    <button type="submit" class="filter-btn active">✔️ Filtro ativo — exibindo apenas filmes não assistidos</button>
+  {% endif %}
+</form>
+
 
     <!-- FAVORITOS -->
     <h2>🎥 Seus filmes favoritos</h2>
