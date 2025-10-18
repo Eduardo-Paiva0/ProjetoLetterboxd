@@ -227,13 +227,18 @@ def recommend():
         return render_template('index.html', error="Não foi possível encontrar os filmes favoritos. Verifique o nome do perfil ou se ele é público.")
 
     # --- Gera recomendações com IA (pool maior se filtro ativo) ---
-    pool_size = 30 if filter_watched else 6
+    pool_size = 30
     prompt = f"""
     O usuário tem como filmes favoritos: {', '.join(favorite_movies)}.
     Gere exatamente {pool_size} recomendações de filmes que ele provavelmente vai gostar,
     baseando-se em semelhanças de tema, estética, narrativa e diretores.
-    Responda APENAS com uma lista simples, cada linha contendo:
-    "Título do filme (ano)" — sem explicações, sem frases introdutórias, sem numeração, sem negrito.
+
+    🟦 Importante:
+    - Use **sempre o título original em inglês**, não traduza os nomes dos filmes.
+    - Inclua o ano entre parênteses.
+    - Responda APENAS com uma lista simples, cada linha no formato:
+    Title (Year)
+    - Não inclua explicações, sem negrito, texto adicional, ou numeração.
     """
 
     try:
@@ -287,13 +292,17 @@ def recommend():
                 print(f"🚫 Removido (já assistido): {r}")
 
         # Garante 6 inéditos (ou preenche se faltar)
-        recommendations = unseen[:6] if len(unseen) >= 6 else (
-            unseen + [r for r in recommendations_pool if normalize_title(r) not in {normalize_title(x) for x in unseen}]
-        )[:6]
+        max_recs = 15
+        recommendations = unseen[:max_recs] if len(unseen) >= max_recs else (
+        unseen + [r for r in recommendations_pool if normalize_title(r) not in {normalize_title(x) for x in unseen}]
+        )[:max_recs]
 
-        print(f"🎯 {len(unseen)} inéditos; entregues {len(recommendations)} após substituição de vistos.")
+        print(f"🎯 {len(unseen)} inéditos; entregues {len(recommendations)} após substituição de vistos (limite {max_recs}).")
     else:
-        recommendations = recommendations_pool[:6]
+            # Mesmo sem filtro, envia até 15 recomendações
+            max_recs = 15
+            recommendations = recommendations_pool[:max_recs]
+    print(f"🎬 {len(recommendations)} recomendações entregues sem filtro (limite {max_recs}).")
 
 
     # --- Enriquecer com dados da OMDb ---

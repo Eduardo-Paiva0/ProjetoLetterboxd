@@ -1,358 +1,317 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Recomendações para {{ username }}</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-  * {
-    box-sizing: border-box;
-  }
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
 
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: radial-gradient(circle at top, #0a0f1a 0%, #000814 100%);
-    color: #e6f0ff;
-    margin: 0;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-  }
-
-  h1 {
-    color: #00b4ff;
-    font-weight: 600;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-    font-size: 2rem;
-    text-align: center;
-  }
-
-  h2 {
-    color: #0096ff;
-    margin-top: 40px;
-    margin-bottom: 15px;
-    text-align: center;
-    font-weight: 500;
-  }
-
-  .container {
-    background: rgba(10, 20, 40, 0.85);
-    backdrop-filter: blur(8px);
-    border-radius: 20px;
-    box-shadow: 0 0 25px rgba(0, 180, 255, 0.25);
-    padding: 40px 50px;
-    width: 100%;
-    max-width: 1200px;
-    animation: fadeIn 1.2s ease;
-  }
-
-  .catalog {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 25px;
-    margin-top: 25px;
-    justify-items: center;
-  }
-
-  .movie-card {
-    background-color: #0b1323;
-    border-radius: 14px;
-    overflow: hidden;
-    width: 160px;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0, 180, 255, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .movie-card:hover {
-    transform: scale(1.07);
-    box-shadow: 0 0 25px rgba(0, 180, 255, 0.8);
-  }
-
-  .movie-card img {
-    width: 100%;
-    height: 240px;
-    object-fit: cover;
-    display: block;
-  }
-
-  .movie-card .title {
-    padding: 8px 6px 3px;
-    font-size: 0.9rem;
-    color: #e0e0e0;
-    font-weight: 500;
-  }
-
-  .genre {
-    font-size: 0.75rem;
-    color: #62d2ff;
-    padding-bottom: 10px;
-  }
-
-  .placeholder {
-    background-color: #13233a;
-    color: #99badd;
-    height: 240px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .back {
-    display: inline-block;
-    margin-top: 40px;
-    background: linear-gradient(90deg, #00b4ff, #007bff);
-    color: #000;
-    font-weight: 600;
-    border: none;
-    padding: 12px 28px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1rem;
-    text-decoration: none;
-    box-shadow: 0 0 10px rgba(0, 180, 255, 0.4);
-    transition: all 0.3s ease;
-  }
-
-  .back:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(0, 180, 255, 0.8);
-  }
-
-  footer {
-    text-align: center;
-    color: #8aa0c4;
-    margin-top: 60px;
-    font-size: 0.8rem;
-  }
-
-  footer a {
-    color: #00b4ff;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  footer a:hover {
-    text-decoration: underline;
-  }
-
-  .feedback {
-    display: inline-block;
-    margin-top: 25px;
-    font-size: 1rem;
-    color: #00b4ff;
-    text-decoration: none;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-  }
-
-  .feedback:hover {
-    opacity: 1;
-    text-decoration: underline;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* 📱 RESPONSIVIDADE - PÁGINA DE RESULTADOS */
-  @media (max-width: 1024px) {
-    .container {
-      padding: 30px 25px;
-      width: 95%;
-    }
-
-    .catalog {
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 18px;
-    }
-
-    .movie-card {
-      width: 140px;
-    }
-
-    .movie-card img {
-      height: 210px;
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #0a0f1a 0%, #000814 100%);
+      color: #e6f0ff;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
     }
 
     h1 {
-      font-size: 1.6rem;
+      color: #00b4ff;
+      font-weight: 600;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      font-size: 2rem;
+      text-align: center;
     }
 
     h2 {
-      font-size: 1.2rem;
-    }
-  }
-
-  @media (max-width: 600px) {
-    body {
-      padding: 20px 10px;
+      color: #0096ff;
+      margin-top: 40px;
+      margin-bottom: 15px;
+      text-align: center;
+      font-weight: 500;
     }
 
     .container {
-      padding: 25px 20px;
+      background: rgba(10, 20, 40, 0.85);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 180, 255, 0.25);
+      padding: 40px 50px 60px;
+      width: 100%;
+      max-width: 1200px;
+      animation: fadeIn 1.2s ease;
     }
 
     .catalog {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 25px;
+      margin-top: 25px;
+      justify-items: center;
     }
 
     .movie-card {
-      width: 100%;
-      max-width: 150px;
+      background-color: #0b1323;
+      border-radius: 14px;
+      overflow: hidden;
+      width: 160px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 180, 255, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
+    .movie-card:hover { transform: scale(1.07); box-shadow: 0 0 25px rgba(0, 180, 255, 0.8); }
 
     .movie-card img {
-      height: 200px;
-    }
-
-    .back {
       width: 100%;
-      max-width: 300px;
+      height: 240px;
+      object-fit: cover;
+      display: block;
     }
 
-    .feedback {
+    .movie-card .title {
+      padding: 8px 6px 3px;
+      font-size: 0.9rem;
+      color: #e0e0e0;
+      font-weight: 500;
+    }
+
+    .genre { font-size: 0.75rem; color: #62d2ff; padding-bottom: 10px; }
+
+    .placeholder {
+      background-color: #13233a;
+      color: #99badd;
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 0.8rem;
     }
 
+    a { color: inherit; text-decoration: none; }
+
+    .back, .show-more {
+      display: inline-block;
+      margin-top: 30px;
+      background: linear-gradient(90deg, #00b4ff, #007bff);
+      color: #000;
+      font-weight: 600;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      box-shadow: 0 0 10px rgba(0, 180, 255, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .back:hover, .show-more:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(0, 180, 255, 0.8); }
+
     footer {
-      font-size: 0.7rem;
-    }
-  }
-
-  @media (max-width: 400px) {
-    .catalog {
-      grid-template-columns: 1fr;
+      text-align: center;
+      color: #8aa0c4;
+      margin-top: 40px;
+      font-size: 0.8rem;
     }
 
-    h1 {
-      font-size: 1.3rem;
+    footer a { color: #00b4ff; text-decoration: none; font-weight: bold; }
+    footer a:hover { text-decoration: underline; }
+
+    .feedback {
+      display: inline-block;
+      margin-top: 25px;
+      font-size: 1rem;
+      color: #00b4ff;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+    .feedback:hover { opacity: 1; text-decoration: underline; }
+
+    /* Botão de filtro */
+    .filter-btn {
+      margin-top: 20px;
+      background: linear-gradient(90deg, #00b4ff, #007bff);
+      color: #000;
+      font-weight: 600;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 0 10px rgba(0, 180, 255, 0.4);
+    }
+    .filter-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(0, 180, 255, 0.8); }
+    .filter-btn.active {
+      background: linear-gradient(90deg, #0094ff, #005eff);
+      color: #000;
+      box-shadow: 0 0 30px rgba(0, 180, 255, 0.9);
+      transform: scale(1.05);
+      animation: pulse 2s infinite;
     }
 
-    h2 {
-      font-size: 1.1rem;
+    /* Animações */
+    @keyframes pulse { 0%{box-shadow:0 0 10px rgba(0,180,255,.5);} 50%{box-shadow:0 0 25px rgba(0,180,255,.9);} 100%{box-shadow:0 0 10px rgba(0,180,255,.5);} }
+    @keyframes fadeIn { from{opacity:0; transform:translateY(15px);} to{opacity:1; transform:translateY(0);} }
+
+    /* Responsividade */
+    @media (max-width: 1024px){
+      .container{ padding:30px 25px; width:95%; }
+      .catalog{ grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:18px; }
+      .movie-card{ width:140px; }
+      .movie-card img{ height:210px; }
+      h1{ font-size:1.6rem; } h2{ font-size:1.2rem; }
     }
-  }
-
-  /* 🎛️ Botão de filtro */
-.filter-btn {
-  margin-top: 20px;
-  background: linear-gradient(90deg, #00b4ff, #007bff);
-  color: #000;
-  font-weight: 600;
-  border: none;
-  padding: 12px 28px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 0 10px rgba(0, 180, 255, 0.4);
-}
-
-.filter-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(0, 180, 255, 0.8);
-}
-
-.filter-btn.active {
-  background: linear-gradient(90deg, #0094ff, #005eff);
-  color: #000;
-  border: none;
-  box-shadow: 0 0 30px rgba(0, 180, 255, 0.9);
-  cursor: default;
-  transform: scale(1.05);
-}
-
-</style>
-
+    @media (max-width: 600px){
+      body{ padding:20px 10px; }
+      .container{ padding:25px 20px; }
+      .catalog{ grid-template-columns:repeat(2, 1fr); gap:15px; }
+      .movie-card{ width:100%; max-width:150px; }
+      .movie-card img{ height:200px; }
+      .back{ width:100%; max-width:300px; }
+      .feedback{ font-size:.8rem; }
+      footer{ font-size:.7rem; }
+    }
+    @media (max-width: 400px){
+      .catalog{ grid-template-columns:1fr; }
+      h1{ font-size:1.3rem; }
+      h2{ font-size:1.1rem; }
+    }
+  </style>
 </head>
-<body>
 
+<body>
   <div class="container">
     <h1>Olá, {{ username }}!</h1>
-<!-- 🔍 BOTÃO DE FILTRO DE FILMES NÃO ASSISTIDOS -->
-<form method="POST" action="/recommend" style="text-align:center; margin: 20px 0;">
-  <input type="hidden" name="username" value="{{ username }}">
-  {% if not filter_watched %}
-    <input type="hidden" name="filter_watched" value="1">
-    <button type="submit" class="filter-btn">🎞️ Mostrar apenas filmes não assistidos</button>
-  {% else %}
-    <button type="submit" class="filter-btn active">✔️ Filtro ativo — exibindo apenas filmes não assistidos</button>
-  {% endif %}
-</form>
 
+    <!-- 🔍 Filtro -->
+    <form method="POST" action="/recommend" style="text-align:center; margin:20px 0;">
+      <input type="hidden" name="username" value="{{ username }}" />
+      {% if not filter_watched %}
+        <input type="hidden" name="filter_watched" value="1" />
+        <button type="submit" class="filter-btn">🎞️ Mostrar apenas filmes não assistidos</button>
+      {% else %}
+        <button type="submit" class="filter-btn active">Filtro ativo — exibindo apenas filmes inéditos</button>
+      {% endif %}
+    </form>
 
-    <!-- FAVORITOS -->
-    <h2>🎥 Seus filmes favoritos</h2>
+    <!-- Favoritos -->
+    <h2>🎬 Seus filmes favoritos</h2>
     <div class="catalog">
       {% for movie in favorites %}
       <div class="movie-card">
         {% if movie.poster %}
           {% if movie.imdb_id %}
             <a href="https://www.imdb.com/title/{{ movie.imdb_id }}/" target="_blank">
-              <img src="{{ movie.poster }}" alt="{{ movie.title }}">
+              <img src="{{ movie.poster }}" alt="{{ movie.title }}" />
             </a>
           {% else %}
-              <img src="{{ movie.poster }}" alt="{{ movie.title }}">
+            <img src="{{ movie.poster }}" alt="{{ movie.title }}" />
           {% endif %}
         {% else %}
           <div class="placeholder">Sem imagem</div>
         {% endif %}
         <div class="title">{{ movie.title }}{% if movie.year %} ({{ movie.year }}){% endif %}</div>
-        {% if movie.genre %}
-          <div class="genre">{{ movie.genre }}</div>
-        {% endif %}
+        {% if movie.genre %}<div class="genre">{{ movie.genre }}</div>{% endif %}
       </div>
       {% endfor %}
     </div>
 
-    <!-- RECOMENDAÇÕES -->
+    <!-- Recomendações -->
     <h2>✨ Recomendações para você</h2>
-    <div class="catalog">
+    <div class="catalog recommendations">
       {% for movie in recommendations %}
       <div class="movie-card">
         {% if movie.poster %}
           {% if movie.imdb_id %}
             <a href="https://www.imdb.com/title/{{ movie.imdb_id }}/" target="_blank">
-              <img src="{{ movie.poster }}" alt="{{ movie.title }}">
+              <img src="{{ movie.poster }}" alt="{{ movie.title }}" />
             </a>
           {% else %}
-            <img src="{{ movie.poster }}" alt="{{ movie.title }}">
+            <img src="{{ movie.poster }}" alt="{{ movie.title }}" />
           {% endif %}
         {% else %}
           <div class="placeholder">Sem imagem</div>
         {% endif %}
         <div class="title">{{ movie.title }}{% if movie.year %} ({{ movie.year }}){% endif %}</div>
-        {% if movie.genre %}
-          <div class="genre">{{ movie.genre }}</div>
-        {% endif %}
+        {% if movie.genre %}<div class="genre">{{ movie.genre }}</div>{% endif %}
       </div>
       {% endfor %}
     </div>
 
+    <!-- Botão "ver mais" dentro da caixa -->
     <div style="text-align:center;">
-      <a href="/" class="back">⬅ Voltar</a>
+      <button id="showMoreBtn" class="show-more">🎬 Ver mais recomendações</button>
     </div>
   </div>
 
+  <!-- Botão "voltar" fora da caixa -->
+  <div style="text-align:center; margin-top:25px;">
+    <a href="/" class="back">⬅ Voltar</a>
+  </div>
+
   <div style="text-align:center; margin-top:15px;">
-  <a href="https://forms.gle/ZKRpy1SQaeBWCWSk7" target="_blank" class="feedback">💬 Enviar feedback</a>
-</div>
+    <a href="https://forms.gle/ZKRpy1SQaeBWCWSk7" target="_blank" class="feedback">💬 Enviar feedback</a>
+  </div>
 
   <footer>
     Criado por <a href="https://github.com/Eduardo-Paiva0" target="_blank">Eduardo Paiva</a>
   </footer>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const showMoreBtn = document.getElementById("showMoreBtn");
+      const allCards = Array.from(document.querySelectorAll(".catalog.recommendations .movie-card"));
+
+      // Se não houver recomendações suficientes, esconde o botão e sai
+      if (!showMoreBtn || allCards.length === 0) return;
+
+      if (allCards.length <= 6) {
+        showMoreBtn.style.display = "none";
+        return;
+      }
+
+      // Esconde tudo após a 6ª
+      allCards.forEach((card, index) => {
+        if (index >= 6) {
+          card.style.display = "none";
+          card.style.transform = "translateY(8px)";
+          card.style.opacity = "0";
+        }
+      });
+
+      let visibleCount = 6;
+      const maxCount = 15;
+
+      showMoreBtn.addEventListener("click", () => {
+        const next = Math.min(visibleCount + 3, allCards.length, maxCount);
+
+        for (let i = visibleCount; i < next; i++) {
+          const card = allCards[i];
+          card.style.display = "block";
+          // animação de entrada
+          requestAnimationFrame(() => {
+            card.style.transition = "opacity 0.35s ease, transform 0.35s ease";
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+          });
+        }
+
+        visibleCount = next;
+
+        // some quando atingir o limite
+        if (visibleCount >= allCards.length || visibleCount >= maxCount) {
+          showMoreBtn.style.display = "none";
+        }
+      });
+    });
+  </script>
 </body>
 </html>
