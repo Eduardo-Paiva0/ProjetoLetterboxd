@@ -262,6 +262,19 @@ def recommend():
                 seen.add(rl)
                 recommendations_pool.append(r)
 
+        # Remove favoritos da lista de recomendações
+        favorites_normalized = {re.sub(r"[^a-zA-Z0-9\s]", "", f).lower().strip() for f in favorite_movies}
+
+        def normalize_basic(title):
+         title = re.sub(r"\(\d{4}\)", "", title)
+         title = re.sub(r"[^a-zA-Z0-9\s]", "", title)
+         return title.lower().strip()
+
+        recommendations_pool = [
+            r for r in recommendations_pool
+            if normalize_basic(r) not in favorites_normalized
+        ]
+
     except Exception as e:
         print("Erro na API da IA:", e)
         return render_template('index.html', error="Erro ao gerar recomendações. Tente novamente mais tarde.")
